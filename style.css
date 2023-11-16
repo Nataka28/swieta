@@ -1,0 +1,176 @@
+body {
+	margin: 0;
+	overflow: hidden;
+	font-family: Verdana;
+	font-size: 20px;
+	color: white;
+	margin: 0px;
+}
+
+video {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	min-width: 100%;
+	min-height: 100%;
+	width: auto;
+	height: auto;
+	transform: translate(-50%, -50%);
+	z-index: -1;
+}
+.container {
+	position: relative;
+	z-index: 1;
+	text-align: center;
+	color: white;
+	font-size: 36px;
+	padding: 20px;
+}
+	#container
+	{
+		width: 1000px;
+		height: 800px;
+		margin-left: auto;
+		margin-right: auto;
+		
+	}
+	#logo
+	{
+		height: 150px;
+		
+	}
+	#nav
+	{
+	height: 50px;
+	}
+
+	#content
+	{
+	background-color:white;
+	padding: 25px;
+    color: black;
+	min-height: 670px;
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	}
+	#footer
+	{
+	color: white;
+	text-align: center;
+	background-color: black;
+	padding: 9px;
+	font-size: 13px;
+	}
+	.tile1
+{
+	float: left;
+	width: 20%;
+	height: 39px;
+	background-color: #336d39;
+	color: white;
+	text-align: center;
+	font-size: 17px;
+    padding-top: 11px;
+	display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+}
+.tile1:hover
+{
+	background-color: #2e5732;
+}
+.tile2
+{
+	float: left;
+	width: 20%;
+	height: 39px;
+	background-color: #336d39;;
+	color: white;
+	text-align: center;
+	font-size: 17px;
+    padding-top: 11px;
+	display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+}
+.tile2:hover
+{
+	background-color: #2e5732;
+}
+.tile3
+{
+	float: left;
+	width: 20%;
+	height: 39px;
+	background-color: #336d39;
+	color: white;
+	text-align: center;
+	font-size: 17px;
+    padding-top: 11px;
+	display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+}
+.tile3:hover
+{
+	background-color: #2e5732;
+}
+.tile4
+{
+	float: left;
+	width: 20%;
+	height: 39px;
+	background-color: #336d39;
+	color: white;
+	text-align: center;
+	font-size: 17px;
+    padding-top: 11px;
+	display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+}
+.tile4:hover
+{
+	background-color: #2e5732;
+}
+.tile5
+{
+	float: left;
+	width: 20%;
+	height: 39px;
+	background-color: #336d39;
+	color: white;
+	text-align: center;
+	font-size: 17px;
+    padding-top: 11px;
+	display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+}
+.tile5:hover
+{
+	background-color: #2e5732;
+}
+a.dblink:hover
+{
+	color: #007d7d;
+	text-decoration: underline;
+}
+a.tilelink
+{
+	color: white;
+	text-decoration: none;
+	display: block;
+	width: 250px;
+	height: 50px;
+}
+a.dblink
+{
+		color: black;
+	text-decoration: none;
+}
