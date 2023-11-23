@@ -10,63 +10,132 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 	<link rel="stylesheet" href="style.css" type="text/css" />
 	<style>
-		.tile2
-{
-	background-color: #2e5732;
-}
+		.tile2 {
+			background-color: #2e5732;
+		}
 
+		#carols {
+			margin-top: 20px;
+			padding: 20px;
+			background-color: #c7e9c88e;
+			border-radius: 8px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			text-align: center;
+		}
 
+		.carol-button {
+			background-color: #2e5732;
+			color: #fff;
+			padding: 10px 20px;
+			margin: 5px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			font-size: 16px;
+		}
+
+		#carolText {
+			font-size: 18px;
+			margin-bottom: 15px;
+			white-space: pre-line; /* Dodane, aby zachować formatowanie tekstu, takie jak nowe linie */
+			text-align: left; /* Dodane, aby tekst był wyrównany do lewej strony */
+		}
+
+		#audioPlayer {
+			width: 100%;
+			max-width: 400px;
+			margin: 0 auto;
+		}
 	</style>
-
 </head>
 <body>
     <video autoplay muted loop>
         <source src="snieg.mp4" type="video/mp4">
-        <!-- Dodaj różne formaty wideo, aby był obsługiwany w różnych przeglądarkach -->
         Your browser does not support the video tag.
     </video>
 
 	<div id="container">
 		<div id="logo">
-		<img src="logo.png" height="150px" width="1000px"/>
+			<img src="img/logo.png" height="150px" width="1000px"/>
 		</div>
 	
-	<div id="nav">
-	<div class="tile1">
-	<a href="index.html" class="tilelink">Menu</a>
-	</div>
-	<div class="tile2">
-	<a href="koledy.html" class="tilelink">Kolędy</a></div>
-	<div class="tile3">
-	<a href="galeria.html" class="tilelink">Galeria</a></div>
-	<div class="tile4">
-	<a href="gry.html" class="tilelink">Gry</a></div>
-	<div class="tile5">
-		<a href="kontakt.html" class="tilelink">Kontakt</a></div>
+		<div id="nav">
+			<div class="tile1">
+				<a href="index.html" class="tilelink">Menu</a>
+			</div>
+			<div class="tile2">
+				<a href="koledy.html" class="tilelink">Kolędy</a>
+			</div>
+			<div class="tile3">
+				<a href="galeria.html" class="tilelink">Galeria</a>
+			</div>
+			<div class="tile4">
+				<a href="gry.html" class="tilelink">Gry</a>
+			</div>
+			<div class="tile5">
+				<a href="kontakt.html" class="tilelink">Kontakt</a>
+			</div>
+		</div>
 
-	</div>
+		<div id="content">
+			<div id="carols">
+				<h2>Wybierz kolędę:</h2>
+				<button class="carol-button" onclick="selectCarol('kolęda1')">Kolęda 1</button>
+				<button class="carol-button" onclick="selectCarol('kolęda2')">Kolęda 2</button>
+				<!-- Dodaj kolejne przyciski dla innych kolęd -->
 
-    <div id="content">
-
-    </div>
+				<p id="carolText">Tekst kolędy pojawi się tutaj po wyborze.</p>
+				<audio id="audioPlayer" controls>
+					<source src="audio/kolęda1.mp3" type="audio/mp3">
+					<!-- Dodaj różne formaty audio, aby był obsługiwany w różnych przeglądarkach -->
+					Your browser does not support the audio tag.
+				</audio>
+			</div>
+		</div>
 	
-	<div id="footer">
-		By Nataka28 &copy; Wszelkie prawa zastrzeżone <span id="currentDate"></span>
+		<div id="footer">
+			By Nataka28 &copy; Wszelkie prawa zastrzeżone <span id="currentDate"></span>
 		</div>
 	</div>
 
-		<script>
-			function aktualizujDate() {
-				const currentDateElement = document.getElementById("currentDate");
-				const aktualnaData = new Date();
-				currentDateElement.textContent = aktualnaData.toLocaleDateString() + " " + aktualnaData.toLocaleTimeString();
+	<script>
+		function aktualizujDate() {
+			const currentDateElement = document.getElementById("currentDate");
+			const aktualnaData = new Date();
+			currentDateElement.textContent = aktualnaData.toLocaleDateString() + " " + aktualnaData.toLocaleTimeString();
+		}
+
+		// Wywołanie funkcji aktualizującej datę na początku
+		aktualizujDate();
+
+		// Ustawienie interwału, aby odświeżać datę co sekundę
+		setInterval(aktualizujDate, 1000);
+
+		// Funkcja obsługująca odtwarzanie audio po wybraniu kolędy
+		function selectCarol(carol) {
+			const carolText = document.getElementById("carolText");
+			const audioPlayer = document.getElementById("audioPlayer");
+
+			// Przykładowe teksty kolęd
+			const carol1Text = "Tekst kolędy 1...sdvbhjggggggggggg gggggljkkkfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffsvdddddddddddddddd";
+			const carol2Text = "Tekst kolędy 2...";
+			// Dodaj kolejne teksty kolęd
+
+			// Przykładowe ścieżki do plików audio
+			const carol1Audio = "audio/kolęda1.mp3";
+			const carol2Audio = "audio/kolęda2.mp3";
+			// Dodaj kolejne ścieżki do plików audio
+
+			// Ustawienie tekstu i ścieżki audio w zależności od wyboru
+			if (carol === "kolęda1") {
+				carolText.textContent = carol1Text;
+				audioPlayer.src = carol1Audio;
+			} else if (carol === "kolęda2") {
+				carolText.textContent = carol2Text;
+				audioPlayer.src = carol2Audio;
 			}
-	
-			// Wywołanie funkcji aktualizującej datę na początku
-			aktualizujDate();
-	
-			// Ustawienie interwału, aby odświeżać datę co sekundę
-			setInterval(aktualizujDate, 1000);
-		</script>
+			// Dodaj kolejne warunki dla innych kolęd
+		}
+	</script>
 </body>
 </html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <meta charset="utf-8"/>
+    <title>Moja strona</title>
+    <meta name="description" content="Moja własna strona internetowa!"/>
+    <meta name="keywords" content=""/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <style>
+        .tile4 {
+            background-color: #2e5732;
+        }
+
+        #memory-game {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        .memory-card {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            perspective: 1000px;
+            cursor: pointer;
+        }
+
+        .memory-card div {
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.5s;
+        }
+
+        .memory-card img {
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+    <video autoplay muted loop>
+        <source src="snieg.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div id="container">
+        <div id="logo">
+            <img src="img/logo.png" height="150px" width="1000px"/>
+        </div>
+    
+        <div id="nav">
+            <div class="tile1">
+                <a href="index.html" class="tilelink">Menu</a>
+            </div>
+            <div class="tile2">
+                <a href="koledy.html" class="tilelink">Kolędy</a>
+            </div>
+            <div class="tile3">
+                <a href="galeria.html" class="tilelink">Galeria</a>
+            </div>
+            <div class="tile4">
+                <a href="gry.html" class="tilelink">Gry</a>
+            </div>
+            <div class="tile5">
+                <a href="kontakt.html" class="tilelink">Kontakt</a>
+            </div>
+        </div>
+
+        <div id="content">
+            <div id="memory-game"></div>
+        </div>
+        
+        <div id="footer">
+            By Nataka28 &copy; Wszelkie prawa zastrzeżone <span id="currentDate"></span>
+        </div>
+    </div>
+
+    <script>
+        function aktualizujDate() {
+            const currentDateElement = document.getElementById("currentDate");
+            const aktualnaData = new Date();
+            currentDateElement.textContent = aktualnaData.toLocaleDateString() + " " + aktualnaData.toLocaleTimeString();
+        }
+
+        // Wywołanie funkcji aktualizującej datę na początku
+        aktualizujDate();
+
+        // Ustawienie interwału, aby odświeżać datę co sekundę
+        setInterval(aktualizujDate, 1000);
+    </script>
+    <script >document.addEventListener('DOMContentLoaded', () => {
+		const cards = [
+			{ name: 'img/zdj1.jpg', img: 'img/zdj1.jpg' },
+			{ name: 'img2', img: 'path/to/img2.jpg' },
+			// Dodaj więcej par zdjęć
+	
+			{ name: 'img1', img: 'path/to/img1.jpg' },
+			{ name: 'img2', img: 'path/to/img2.jpg' },
+			// Dodaj więcej par zdjęć
+		];
+	
+		cards.sort(() => 0.5 - Math.random());
+	
+		const grid = document.getElementById('memory-game');
+		let chosenCards = [];
+		let chosenCardsId = [];
+		const cardsWon = [];
+	
+		// Tworzenie planszy gry
+		function createBoard() {
+			for (let i = 0; i < cards.length; i++) {
+				const card = document.createElement('div');
+				card.classList.add('memory-card');
+				card.dataset.id = i;
+				card.addEventListener('click', flipCard);
+	
+				const innerDiv = document.createElement('div');
+				innerDiv.classList.add('inner');
+				const imgElement = document.createElement('img');
+				imgElement.src = 'path/to/cover.jpg'; // Ścieżka do obrazka zasłaniającego
+				imgElement.classList.add('front-face');
+				imgElement.setAttribute('data-id', i);
+	
+				innerDiv.appendChild(imgElement);
+				card.appendChild(innerDiv);
+	
+				grid.appendChild(card);
+			}
+		}
+	
+		// Odkrywanie kart
+		function flipCard() {
+			const cardId = this.dataset.id;
+			chosenCards.push(cards[cardId].name);
+			chosenCardsId.push(cardId);
+			this.children[0].style.transform = 'rotateY(180deg)';
+			this.children[0].style.transition = 'transform 0.5s';
+	
+			if (chosenCards.length === 2) {
+				setTimeout(checkForMatch, 500);
+			}
+		}
+	
+		// Sprawdzanie, czy karty są takie same
+		function checkForMatch() {
+			const cardsDivs = document.querySelectorAll('.memory-card');
+			const [id1, id2] = chosenCardsId;
+			const [name1, name2] = chosenCards;
+	
+			if (name1 === name2 && id1 !== id2) {
+				cardsDivs[id1].removeEventListener('click', flipCard);
+				cardsDivs[id2].removeEventListener('click', flipCard);
+				cardsWon.push(chosenCards);
+			} else {
+				cardsDivs[id1].children[0].style.transform = 'rotateY(0deg)';
+				cardsDivs[id2].children[0].style.transform = 'rotateY(0deg)';
+			}
+	
+			chosenCards = [];
+			chosenCardsId = [];
+	
+			// Sprawdź, czy wszystkie pary zostały odgadnięte
+			if (cardsWon.length === cards.length / 2) {
+				alert('Gratulacje! Wygrałeś!');
+			}
+		}
+	
+		createBoard();
+	});</script>
+</body>
+</html>

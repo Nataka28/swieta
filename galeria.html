@@ -9,62 +9,213 @@
 	<meta name="keywords" content=""/>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 	<link rel="stylesheet" href="style.css" type="text/css" />
-	<style>
-		.tile3
-{
-	background-color: #2e5732;
-}
-	</style>
 
+	<style>
+		.tile3 {
+			background-color: #2e5732;
+		}
+
+		#gallery {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+			grid-gap: 10px;
+			margin: 20px;
+		}
+
+		#gallery img {
+			width: 100%;
+			height: 150px; /* Ustaw stałą wysokość dla wszystkich obrazków */
+			object-fit: cover; /* Dostosuj obraz do wymiarów kontenera */
+			border-radius: 8px;
+			box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+			transition: transform 0.3s ease-in-out;
+			cursor: pointer;
+		}
+
+		#gallery img:hover {
+			transform: scale(1.1);
+		}
+
+		#overlay {
+			display: none;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(0, 0, 0, 0.9);
+			justify-content: center;
+			align-items: center;
+		}
+
+		#overlay img {
+			width: 80%;
+			height: auto;
+			border-radius: 8px;
+		}
+
+		#closeBtn {
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			color: white;
+			font-size: 20px;
+			cursor: pointer;
+		}
+
+		#prevBtn,
+		#nextBtn {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			font-size: 30px;
+			color: white;
+			cursor: pointer;
+		}
+
+		#prevBtn {
+			left: 10px;
+		}
+
+		#nextBtn {
+			right: 10px;
+		}
+	</style>
 </head>
 <body>
     <video autoplay muted loop>
         <source src="snieg.mp4" type="video/mp4">
-        <!-- Dodaj różne formaty wideo, aby był obsługiwany w różnych przeglądarkach -->
         Your browser does not support the video tag.
     </video>
 
 	<div id="container">
 		<div id="logo">
-		<img src="logo.png" height="150px" width="1000px"/>
+			<img src="img/logo.png" height="150px" width="1000px"/>
 		</div>
 	
-	<div id="nav">
-	<div class="tile1">
-	<a href="index.html" class="tilelink">Menu</a>
-	</div>
-	<div class="tile2">
-	<a href="koledy.html" class="tilelink">Kolędy</a></div>
-	<div class="tile3">
-	<a href="galeria.html" class="tilelink">Galeria</a></div>
-	<div class="tile4">
-	<a href="gry.html" class="tilelink">Gry</a></div>
-	<div class="tile5">
-		<a href="kontakt.html" class="tilelink">Kontakt</a></div>
+		<div id="nav">
+			<div class="tile1">
+				<a href="index.html" class="tilelink">Menu</a>
+			</div>
+			<div class="tile2">
+				<a href="koledy.html" class="tilelink">Kolędy</a>
+			</div>
+			<div class="tile3">
+				<a href="galeria.html" class="tilelink">Galeria</a>
+			</div>
+			<div class="tile4">
+				<a href="gry.html" class="tilelink">Gry</a>
+			</div>
+			<div class="tile5">
+				<a href="kontakt.html" class="tilelink">Kontakt</a>
+			</div>
+		</div>
 
-	</div>
+		<div id="content">
+			<h2>Galeria</h2>
+			<div id="gallery">
+				<img src="img/zdj1.jpg" alt="Zdjęcie 1" onclick="openOverlay('img/zdj1.jpg', 0)">
+				<img src="img/zdj2.jpg" alt="Zdjęcie 2" onclick="openOverlay('img/zdj2.jpg', 1)">
+				<img src="img/zdj3.jpg" alt="Zdjęcie 3" onclick="openOverlay('img/zdj3.jpg', 2)">
+				<img src="img/zdj4.jpg" alt="Zdjęcie 4" onclick="openOverlay('img/zdj4.jpg', 3)">
+				<img src="img/zdj5.jpg" alt="Zdjęcie 5" onclick="openOverlay('img/zdj5.jpg', 4)">
+				<img src="img/zdj6.jpg" alt="Zdjęcie 6" onclick="openOverlay('img/zdj6.jpg', 5)">
+				<img src="img/zdj7.jpg" alt="Zdjęcie 7" onclick="openOverlay('img/zdj7.jpg', 6)">
+				<img src="img/zdj8.jpg" alt="Zdjęcie 8" onclick="openOverlay('img/zdj8.jpg', 7)">
+				<img src="img/zdj9.jpg" alt="Zdjęcie 9" onclick="openOverlay('img/zdj9.jpg', 8)">
+				<img src="img/zdj10.jpg" alt="Zdjęcie 10" onclick="openOverlay('img/zdj10.jpg', 9)">
+				<img src="img/zdj11.jpg" alt="Zdjęcie 11" onclick="openOverlay('img/zdj11.jpg', 10)">
+				<img src="img/zdj12.jpg" alt="Zdjęcie 12" onclick="openOverlay('img/zdj12.jpg', 11)">
+				<img src="img/zdj13.jpg" alt="Zdjęcie 13" onclick="openOverlay('img/zdj13.jpg', 12)">
+				<img src="img/zdj14.jpg" alt="Zdjęcie 14" onclick="openOverlay('img/zdj14.jpg', 13)">
+				<img src="img/zdj15.jpg" alt="Zdjęcie 15" onclick="openOverlay('img/zdj15.jpg', 14)">
+				<img src="img/zdj16.jpg" alt="Zdjęcie 16" onclick="openOverlay('img/zdj16.jpg', 15)">
+				<!-- Dodaj kolejne zdjęcia -->
 
-    <div id="content">
+				<!-- Możesz również użyć linków do zdjęć -->
+				<!-- <img src="miniatura_zdjecia" alt="Opis" onclick="openOverlay('pelna_sciezka_do_zdjecia')"> -->
+			</div>
 
-    </div>
+			<!-- Overlay dla powiększonych zdjęć -->
+			<div id="overlay">
+				<span id="closeBtn" onclick="closeOverlay()">&times;</span>
+				<img id="overlayImg" src="" alt="Powiększone zdjęcie">
+				<span id="prevBtn" onclick="changePhoto(-1)">&#10094;</span>
+				<span id="nextBtn" onclick="changePhoto(1)">&#10095;</span>
+			</div>
+		</div>
 	
-	<div id="footer">
-		By Nataka28 &copy; Wszelkie prawa zastrzeżone <span id="currentDate"></span>
+		<div id="footer">
+			By Nataka28 &copy; Wszelkie prawa zastrzeżone <span id="currentDate"></span>
 		</div>
 	</div>
 
-		<script>
-			function aktualizujDate() {
-				const currentDateElement = document.getElementById("currentDate");
-				const aktualnaData = new Date();
-				currentDateElement.textContent = aktualnaData.toLocaleDateString() + " " + aktualnaData.toLocaleTimeString();
+	<script>
+		function aktualizujDate() {
+			const currentDateElement = document.getElementById("currentDate");
+			const aktualnaData = new Date();
+			currentDateElement.textContent = aktualnaData.toLocaleDateString() + " " + aktualnaData.toLocaleTimeString();
+		}
+	
+		// Wywołanie funkcji aktualizującej datę na początku
+		aktualizujDate();
+	
+		// Ustawienie interwału, aby odświeżać datę co sekundę
+		setInterval(aktualizujDate, 1000);
+
+		let currentPhotoIndex;
+
+		// Funkcja otwierająca overlay z powiększonym zdjęciem
+		function openOverlay(imgSrc, index) {
+			const overlay = document.getElementById("overlay");
+			const overlayImg = document.getElementById("overlayImg");
+
+			overlay.style.display = "flex";
+			overlayImg.src = imgSrc;
+			currentPhotoIndex = index;
+			updateNavigationButtons();
+		}
+
+		// Funkcja zamykająca overlay
+		function closeOverlay() {
+			const overlay = document.getElementById("overlay");
+			overlay.style.display = "none";
+		}
+
+		// Funkcja zmieniająca obecnie wyświetlane zdjęcie
+		function changePhoto(direction) {
+			currentPhotoIndex += direction;
+			const galleryImages = document.querySelectorAll("#gallery img");
+
+			if (currentPhotoIndex < 0) {
+				currentPhotoIndex = galleryImages.length - 1;
+			} else if (currentPhotoIndex >= galleryImages.length) {
+				currentPhotoIndex = 0;
 			}
-	
-			// Wywołanie funkcji aktualizującej datę na początku
-			aktualizujDate();
-	
-			// Ustawienie interwału, aby odświeżać datę co sekundę
-			setInterval(aktualizujDate, 1000);
-		</script>
+
+			const newImgSrc = galleryImages[currentPhotoIndex].src;
+			const overlayImg = document.getElementById("overlayImg");
+			overlayImg.src = newImgSrc;
+			updateNavigationButtons();
+		}
+
+		// Funkcja aktualizująca stan przycisków nawigacyjnych
+		function updateNavigationButtons() {
+			const prevBtn = document.getElementById("prevBtn");
+			const nextBtn = document.getElementById("nextBtn");
+
+			if (currentPhotoIndex === 0) {
+				prevBtn.style.display = "none";
+			} else {
+				prevBtn.style.display = "block";
+			}
+
+			if (currentPhotoIndex === document.querySelectorAll("#gallery img").length - 1) {
+				nextBtn.style.display = "none";
+			} else {
+				nextBtn.style.display = "block";
+			}
+		}
+	</script>
 </body>
 </html>
