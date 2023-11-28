@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">	
+	<meta charset="utf-8"/>
+	<title>Moja strona</title>
+	<meta name="description" content="Moja własna strona internetowa!"/>
+	<meta name="keywords" content=""/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+	<link rel="stylesheet" href="style.css" type="text/css" />
+	<style>
+		.tile4
+{
+	background-color: #2e5732;
+}
+
+	</style>
+
+</head>
+<body>
+    <video autoplay muted loop>
+        <source src="snieg.mp4" type="video/mp4">
+        <!-- Dodaj różne formaty wideo, aby był obsługiwany w różnych przeglądarkach -->
+        Your browser does not support the video tag.
+    </video>
+
+	<div id="container">
+		<div id="logo">
+		<img src="img/logo.png" height="150px" width="1000px"/>
+		</div>
+	
+	<div id="nav">
+	<div class="tile1">
+	<a href="index.html" class="tilelink">Menu</a>
+	</div>
+	<div class="tile2">
+	<a href="koledy.html" class="tilelink">Kolędy</a></div>
+	<div class="tile3">
+	<a href="galeria.html" class="tilelink">Galeria</a></div>
+	<div class="tile4">
+	<a href="gry.html" class="tilelink">Gry</a></div>
+	<div class="tile5">
+		<a href="kontakt.html" class="tilelink">Kontakt</a></div>
+        <meta charset="utf-8" />
+        <title>Szubienica</title>
+    
+        <link href='https://fonts.googleapis.com/css?family=Inconsolata:400,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="style.css" type="text/css" />
+        <script src="szubienica.js"></script>
+    
+	</div>
+
+    <div id="content">
+        <div id="pojemnik">
+            <div id="plansza"></div>
+            <div id="szubienica">
+                <img src="img/s0.jpg" alt="" />
+            </div>
+            <div id="alfabet"></div>
+            <div style="clear:both;"></div>
+        </div>
+    
+    </div>
+	
+	<div id="footer">
+		By Nataka28 &copy; Wszelkie prawa zastrzeżone <span id="currentDate"></span>
+		</div>
+	</div>
+
+		<script>
+			function aktualizujDate() {
+				const currentDateElement = document.getElementById("currentDate");
+				const aktualnaData = new Date();
+				currentDateElement.textContent = aktualnaData.toLocaleDateString() + " " + aktualnaData.toLocaleTimeString();
+			}
+	
+			// Wywołanie funkcji aktualizującej datę na początku
+			aktualizujDate();
+	
+			// Ustawienie interwału, aby odświeżać datę co sekundę
+			setInterval(aktualizujDate, 1000);
+		</script>
+</body>
+</html>
