@@ -12,35 +12,14 @@
     <style>
         .tile4 {
             background-color: #2e5732;
-        }
+        } 
 
-        #memory-game {
-            display: flex;
-            flex-wrap: wrap;
-            max-width: 600px;
-            margin: 20px auto;
-        }
 
-        .memory-card {
-            width: 100px;
-            height: 100px;
-            margin: 10px;
-            perspective: 1000px;
-            cursor: pointer;
-        }
+.card-after img {
+  width: 100%; /* Zapewnia, że obraz w card-after zajmie całą przestrzeń wewnątrz karty */
+}
 
-        .memory-card div {
-            width: 100%;
-            height: 100%;
-            transform-style: preserve-3d;
-            transition: transform 0.5s;
-        }
 
-        .memory-card img {
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-        }
     </style>
 </head>
 <body>
@@ -73,9 +52,19 @@
         </div>
 
         <div id="content">
-            <div id="memory-game"></div>
+          <div class="stats-container">
+                <div id="moves-count"></div>
+                <div id="time"></div>
+              </div>
+              <div class="game-container"></div>
+              <button id="stop" class="hide">Stop Game</button>
+            </div>
+            <div class="controls-container">
+              <p id="result"></p>
+              <button id="start">Start Game</button>
+            </div>
         </div>
-        
+
         <div id="footer">
             By Nataka28 &copy; Wszelkie prawa zastrzeżone <span id="currentDate"></span>
         </div>
@@ -94,84 +83,179 @@
         // Ustawienie interwału, aby odświeżać datę co sekundę
         setInterval(aktualizujDate, 1000);
     </script>
-    <script >document.addEventListener('DOMContentLoaded', () => {
-		const cards = [
-			{ name: 'img/zdj1.jpg', img: 'img/zdj1.jpg' },
-			{ name: 'img2', img: 'path/to/img2.jpg' },
-			// Dodaj więcej par zdjęć
-	
-			{ name: 'img1', img: 'path/to/img1.jpg' },
-			{ name: 'img2', img: 'path/to/img2.jpg' },
-			// Dodaj więcej par zdjęć
-		];
-	
-		cards.sort(() => 0.5 - Math.random());
-	
-		const grid = document.getElementById('memory-game');
-		let chosenCards = [];
-		let chosenCardsId = [];
-		const cardsWon = [];
-	
-		// Tworzenie planszy gry
-		function createBoard() {
-			for (let i = 0; i < cards.length; i++) {
-				const card = document.createElement('div');
-				card.classList.add('memory-card');
-				card.dataset.id = i;
-				card.addEventListener('click', flipCard);
-	
-				const innerDiv = document.createElement('div');
-				innerDiv.classList.add('inner');
-				const imgElement = document.createElement('img');
-				imgElement.src = 'path/to/cover.jpg'; // Ścieżka do obrazka zasłaniającego
-				imgElement.classList.add('front-face');
-				imgElement.setAttribute('data-id', i);
-	
-				innerDiv.appendChild(imgElement);
-				card.appendChild(innerDiv);
-	
-				grid.appendChild(card);
-			}
-		}
-	
-		// Odkrywanie kart
-		function flipCard() {
-			const cardId = this.dataset.id;
-			chosenCards.push(cards[cardId].name);
-			chosenCardsId.push(cardId);
-			this.children[0].style.transform = 'rotateY(180deg)';
-			this.children[0].style.transition = 'transform 0.5s';
-	
-			if (chosenCards.length === 2) {
-				setTimeout(checkForMatch, 500);
-			}
-		}
-	
-		// Sprawdzanie, czy karty są takie same
-		function checkForMatch() {
-			const cardsDivs = document.querySelectorAll('.memory-card');
-			const [id1, id2] = chosenCardsId;
-			const [name1, name2] = chosenCards;
-	
-			if (name1 === name2 && id1 !== id2) {
-				cardsDivs[id1].removeEventListener('click', flipCard);
-				cardsDivs[id2].removeEventListener('click', flipCard);
-				cardsWon.push(chosenCards);
-			} else {
-				cardsDivs[id1].children[0].style.transform = 'rotateY(0deg)';
-				cardsDivs[id2].children[0].style.transform = 'rotateY(0deg)';
-			}
-	
-			chosenCards = [];
-			chosenCardsId = [];
-	
-			// Sprawdź, czy wszystkie pary zostały odgadnięte
-			if (cardsWon.length === cards.length / 2) {
-				alert('Gratulacje! Wygrałeś!');
-			}
-		}
-	
-		createBoard();
-	});</script>
+    <script >
+const moves = document.getElementById("moves-count");
+const timeValue = document.getElementById("time");
+const startButton = document.getElementById("start");
+const stopButton = document.getElementById("stop");
+const gameContainer = document.querySelector(".game-container");
+const result = document.getElementById("result");
+const controls = document.querySelector(".controls-container");
+let cards;
+let interval;
+let firstCard = false;
+let secondCard = false;
+//Items array
+const items = [
+  { name: "bee", image: "img/pam1.jpg" },
+  { name: "crocodile", image: "img/pam2.jpg" },
+  { name: "macaw", image: "img/pam3.jpg" },
+  { name: "gorilla", image: "img/pam4.jpg" },
+  { name: "tiger", image: "img/pam5.jpg" },
+  { name: "monkey", image: "img/pam6.jpg" },
+  { name: "chameleon", image: "img/pam7.jpg" },
+  { name: "piranha", image: "img/pam8.jpg" },
+  { name: "anaconda", image: "img/pam9.jpg" },
+  { name: "sloth", image: "img/pam10.jpg" },
+  { name: "cockatoo", image: "img/pam11.jpg" },
+  { name: "toucan", image: "img/pam12.jpg" },
+];
+//Initial Time
+let seconds = 0,
+  minutes = 0;
+//Initial moves and win count
+let movesCount = 0,
+  winCount = 0;
+//For timer
+const timeGenerator = () => {
+  seconds += 1;
+  //minutes logic
+  if (seconds >= 60) {
+    minutes += 1;
+    seconds = 0;
+  }
+  //format time before displaying
+  let secondsValue = seconds < 10 ? `0${seconds}` : seconds;
+  let minutesValue = minutes < 10 ? `0${minutes}` : minutes;
+  timeValue.innerHTML = `<span>Time:</span>${minutesValue}:${secondsValue}`;
+};
+//For calculating moves
+const movesCounter = () => {
+  movesCount += 1;
+  moves.innerHTML = `<span>Moves:</span>${movesCount}`;
+};
+//Pick random objects from the items array
+const generateRandom = (size = 4) => {
+  //temporary array
+  let tempArray = [...items];
+  //initializes cardValues array
+  let cardValues = [];
+  //size should be double (4*4 matrix)/2 since pairs of objects would exist
+  size = (size * size) / 2;
+  //Random object selection
+  for (let i = 0; i < size; i++) {
+    const randomIndex = Math.floor(Math.random() * tempArray.length);
+    cardValues.push(tempArray[randomIndex]);
+    //once selected remove the object from temp array
+    tempArray.splice(randomIndex, 1);
+  }
+  return cardValues;
+};
+const matrixGenerator = (cardValues, size = 4) => {
+  gameContainer.innerHTML = "";
+  cardValues = [...cardValues, ...cardValues];
+  //simple shuffle
+  cardValues.sort(() => Math.random() - 0.5);
+  for (let i = 0; i < size * size; i++) {
+    /*
+        Create Cards
+        before => front side (contains question mark)
+        after => back side (contains actual image);
+        data-card-values is a custom attribute which stores the names of the cards to match later
+      */
+    gameContainer.innerHTML += `
+     <div class="card-container" data-card-value="${cardValues[i].name}">
+        <div class="card-before">?</div>
+        <div class="card-after">
+        <img src="${cardValues[i].image}" class="image"/></div>
+     </div>
+     `;
+  }
+  //Grid
+  gameContainer.style.gridTemplateColumns = `repeat(${size},auto)`;
+  //Cards
+  cards = document.querySelectorAll(".card-container");
+  cards.forEach((card) => {
+    card.addEventListener("click", () => {
+      //If selected card is not matched yet then only run (i.e already matched card when clicked would be ignored)
+      if (!card.classList.contains("matched")) {
+        //flip the cliked card
+        card.classList.add("flipped");
+        //if it is the firstcard (!firstCard since firstCard is initially false)
+        if (!firstCard) {
+          //so current card will become firstCard
+          firstCard = card;
+          //current cards value becomes firstCardValue
+          firstCardValue = card.getAttribute("data-card-value");
+        } else {
+          //increment moves since user selected second card
+          movesCounter();
+          //secondCard and value
+          secondCard = card;
+          let secondCardValue = card.getAttribute("data-card-value");
+          if (firstCardValue == secondCardValue) {
+            //if both cards match add matched class so these cards would beignored next time
+            firstCard.classList.add("matched");
+            secondCard.classList.add("matched");
+            //set firstCard to false since next card would be first now
+            firstCard = false;
+            //winCount increment as user found a correct match
+            winCount += 1;
+            //check if winCount ==half of cardValues
+            if (winCount == Math.floor(cardValues.length / 2)) {
+              result.innerHTML = `<h2>You Won</h2>
+            <h4>Moves: ${movesCount}</h4>`;
+              stopGame();
+            }
+          } else {
+            //if the cards dont match
+            //flip the cards back to normal
+            let [tempFirst, tempSecond] = [firstCard, secondCard];
+            firstCard = false;
+            secondCard = false;
+            let delay = setTimeout(() => {
+              tempFirst.classList.remove("flipped");
+              tempSecond.classList.remove("flipped");
+            }, 900);
+          }
+        }
+      }
+    });
+  });
+};
+//Start game
+startButton.addEventListener("click", () => {
+  movesCount = 0;
+  seconds = 0;
+  minutes = 0;
+  //controls amd buttons visibility
+  controls.classList.add("hide");
+  stopButton.classList.remove("hide");
+  startButton.classList.add("hide");
+  //Start timer
+  interval = setInterval(timeGenerator, 1000);
+  //initial moves
+  moves.innerHTML = `<span>Moves:</span> ${movesCount}`;
+  initializer();
+});
+//Stop game
+stopButton.addEventListener(
+  "click",
+  (stopGame = () => {
+    controls.classList.remove("hide");
+    stopButton.classList.add("hide");
+    startButton.classList.remove("hide");
+    clearInterval(interval);
+  })
+);
+//Initialize values and func calls
+const initializer = () => {
+  result.innerText = "";
+  winCount = 0;
+  let cardValues = generateRandom();
+  console.log(cardValues);
+  matrixGenerator(cardValues);
+};
+    </script>
 </body>
 </html>
