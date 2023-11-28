@@ -1,4 +1,5 @@
-var haslo = "Bez pracy nie ma kołaczy";
+var hasla = ["Biedronka na Święta", "Picie kakao", "Lepienie bałwana", "Kalendarz adwentowy", "Ubieranie choinki"];
+var haslo = hasla[Math.floor(Math.random() * hasla.length)].toUpperCase();
 haslo = haslo.toUpperCase();
 
 var dlugosc = haslo.length;
