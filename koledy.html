@@ -2,51 +2,54 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">	
-	<meta charset="utf-8"/>
-	<title>Moja strona</title>
-	<meta name="description" content="Moja własna strona internetowa!"/>
-	<meta name="keywords" content=""/>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-	<link rel="stylesheet" href="style.css" type="text/css" />
-	<style>
-		.tile2 {
-			background-color: #2e5732;
-		}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <meta charset="utf-8"/>
+    <title>Moja strona</title>
+    <meta name="description" content="Moja własna strona internetowa!"/>
+    <meta name="keywords" content=""/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <style>
+        .tile2 {
+            background-color: #2e5732;
+        }
 
-		#carols {
-			margin-top: 20px;
-			padding: 20px;
-			background-color: #c7e9c88e;
-			border-radius: 8px;
-			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-			text-align: center;
-		}
+        #carols {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #c7e9c88e;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
 
-		.carol-button {
-			background-color: #2e5732;
-			color: #fff;
-			padding: 10px 20px;
-			margin: 5px;
-			border: none;
-			border-radius: 5px;
-			cursor: pointer;
-			font-size: 16px;
-		}
+        .carol-button {
+            background-color: #2e5732;
+            color: #fff;
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
 
-		#carolText {
-			font-size: 18px;
-			margin-bottom: 15px;
-			white-space: pre-line; /* Dodane, aby zachować formatowanie tekstu, takie jak nowe linie */
-			text-align: left; /* Dodane, aby tekst był wyrównany do lewej strony */
-		}
+        #carolText {
+            font-size: 18px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
 
-		#audioPlayer {
-			width: 100%;
-			max-width: 400px;
-			margin: 0 auto;
-		}
-	</style>
+        .carol-text {
+            white-space: pre-line;
+        }
+
+        #audioPlayer {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+    </style>
 </head>
 <body>
     <video autoplay muted loop>
@@ -54,88 +57,88 @@
         Your browser does not support the video tag.
     </video>
 
-	<div id="container">
-		<div id="logo">
-			<img src="img/logo.png" height="150px" width="1000px"/>
-		</div>
-	
-		<div id="nav">
-			<div class="tile1">
-				<a href="index.html" class="tilelink">Menu</a>
-			</div>
-			<div class="tile2">
-				<a href="koledy.html" class="tilelink">Kolędy</a>
-			</div>
-			<div class="tile3">
-				<a href="galeria.html" class="tilelink">Galeria</a>
-			</div>
-			<div class="tile4">
-				<a href="gry.html" class="tilelink">Gry</a>
-			</div>
-			<div class="tile5">
-				<a href="kontakt.html" class="tilelink">Kontakt</a>
-			</div>
-		</div>
+    <div id="container">
+        <div id="logo">
+            <img src="img/logo.png" height="150px" width="1000px"/>
+        </div>
+    
+        <div id="nav">
+            <div class="tile1">
+                <a href="index.html" class="tilelink">Menu</a>
+            </div>
+            <div class="tile2">
+                <a href="koledy.html" class="tilelink">Kolędy</a>
+            </div>
+            <div class="tile3">
+                <a href="galeria.html" class="tilelink">Galeria</a>
+            </div>
+            <div class="tile4">
+                <a href="gry.html" class="tilelink">Gry</a>
+            </div>
+            <div class="tile5">
+                <a href="kontakt.html" class="tilelink">Kontakt</a>
+            </div>
+        </div>
 
-		<div id="content">
-			<div id="carols">
-				<h2>Wybierz kolędę:</h2>
-				<button class="carol-button" onclick="selectCarol('kolęda1')">Kolęda 1</button>
-				<button class="carol-button" onclick="selectCarol('kolęda2')">Kolęda 2</button>
-				<!-- Dodaj kolejne przyciski dla innych kolęd -->
+        <div id="content">
+            <div id="carols">
+                <h2>Wybierz kolędę:</h2>
+                <button class="carol-button" onclick="selectCarol('kolęda1')">Bóg się rodzi</button>
+                <button class="carol-button" onclick="selectCarol('kolęda2')">Cicha noc, święta noc</button>
+                <!-- Dodaj kolejne przyciski dla innych kolęd -->
 
-				<p id="carolText">Tekst kolędy pojawi się tutaj po wyborze.</p>
-				<audio id="audioPlayer" controls>
-					<source src="audio/kolęda1.mp3" type="audio/mp3">
-					<!-- Dodaj różne formaty audio, aby był obsługiwany w różnych przeglądarkach -->
-					Your browser does not support the audio tag.
-				</audio>
-			</div>
-		</div>
-	
-		<div id="footer">
-			By Nataka28 &copy; Wszelkie prawa zastrzeżone <span id="currentDate"></span>
-		</div>
-	</div>
+                <div id="carolText" class="carol-text"><br>Tekst kolędy pojawi się tutaj po wyborze.</div>
+                <audio id="audioPlayer" controls>
+                    <source src="audio/kolęda1.mp3" type="audio/mp3">
+                    <!-- Dodaj różne formaty audio, aby był obsługiwany w różnych przeglądarkach -->
+                    Your browser does not support the audio tag.
+                </audio>
+            </div>
+        </div>
+    
+        <div id="footer">
+            By Nataka28 &copy; Wszelkie prawa zastrzeżone <span id="currentDate"></span>
+        </div>
+    </div>
 
-	<script>
-		function aktualizujDate() {
-			const currentDateElement = document.getElementById("currentDate");
-			const aktualnaData = new Date();
-			currentDateElement.textContent = aktualnaData.toLocaleDateString() + " " + aktualnaData.toLocaleTimeString();
-		}
+    <script>
+        function aktualizujDate() {
+            const currentDateElement = document.getElementById("currentDate");
+            const aktualnaData = new Date();
+            currentDateElement.textContent = aktualnaData.toLocaleDateString() + " " + aktualnaData.toLocaleTimeString();
+        }
 
-		// Wywołanie funkcji aktualizującej datę na początku
-		aktualizujDate();
+        // Wywołanie funkcji aktualizującej datę na początku
+        aktualizujDate();
 
-		// Ustawienie interwału, aby odświeżać datę co sekundę
-		setInterval(aktualizujDate, 1000);
+        // Ustawienie interwału, aby odświeżać datę co sekundę
+        setInterval(aktualizujDate, 1000);
 
-		// Funkcja obsługująca odtwarzanie audio po wybraniu kolędy
-		function selectCarol(carol) {
-			const carolText = document.getElementById("carolText");
-			const audioPlayer = document.getElementById("audioPlayer");
+        // Funkcja obsługująca odtwarzanie audio po wybraniu kolędy
+        function selectCarol(carol) {
+            const carolText = document.getElementById("carolText");
+            const audioPlayer = document.getElementById("audioPlayer");
 
-			// Przykładowe teksty kolęd
-			const carol1Text = "Tekst kolędy 1...sdvbhjggggggggggg gggggljkkkfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffsvdddddddddddddddd";
-			const carol2Text = "Tekst kolędy 2...";
+            // Przykładowe teksty kolęd
+            const carol1Text = "\nBóg się rodzi, moc truchleje:\nPan niebiosów obnażony.\nOgień krzepnie, blask ciemnieje,\nMa granice Nieskończony:\n\nWzgardzony okryty chwałą,\nŚmiertelny Król nad wiekami;\nA Słowo ciałem się stało\nI mieszkało między nami.\n\nCóż masz, niebo, nad ziemiami?\nBóg porzucił szczęście swoje,\nWszedł między lud ukochany,\nDzieląc z nim trudy i znoje,\n\nNiemało cierpiał, niemało,\nŻeśmy byli winni sami,\nA Słowo ciałem się stało\nI mieszkało między nami.\n\nW nędznej szopie urodzony,\nŻłób Mu za kolebkę dano.\nCóż jest, czym był otoczony?\nBydło, pasterze i siano;\n\nUbodzy! Was to spotkało,\nWitać Go przed bogaczami,\nA Słowo ciałem się stało\nI mieszkało między nami.\n\nPotem i króle widziani\nCisną się między prostotą,\nNiosąc dary Panu w dani:\nMirrę, kadzidło i złoto;\n\nBóstwo to razem zmieszało\nZ wieśniaczymi ofiarami,\nA Słowo ciałem się stało\nI mieszkało między nami.\n\nPodnieś rękę, Boże Dziecię!\nBłogosław Ojczyznę miłą!\nW dobrych radach, w dobrym bycie\nWspieraj jej siłę swą siłą,\n\nDom nasz i majętność całą\nI wszystkie wioski z miastami!\nA Słowo ciałem się stało\nI mieszkało między nami.";
+            const carol2Text = "\nCicha noc, święta noc,\npokój niesie ludziom wszem\na u żłobka Matka Święta\nczuwa sama uśmiechnięta,\nnad Dzieciątka snem. 2x\n\nCicha noc, święta noc,\npastuszkowie od swych trzód\nbiegną wielce zadziwieni,\nza anielskim głosem pieni,\ngdzie się spełnił cud. 2x\n\nCicha noc, święta noc,\nnarodzony Boży Syn,\nPan wielkiego majestatu,\nniesie dziś całemu światu\nodkupienie win. 2x\n\nCicha noc, święta noc,\njakiż w tobie dzisiaj cud,\nw Betlejem Dziecina święta\nwznosi w górę swe rączęta\nbłogosławi lud. 2x";
 			// Dodaj kolejne teksty kolęd
 
-			// Przykładowe ścieżki do plików audio
-			const carol1Audio = "audio/kolęda1.mp3";
-			const carol2Audio = "audio/kolęda2.mp3";
-			// Dodaj kolejne ścieżki do plików audio
+            // Przykładowe ścieżki do plików audio
+            const carol1Audio = "audio/kolęda1.mp3";
+            const carol2Audio = "audio/kolęda2.mp3";
+            // Dodaj kolejne ścieżki do plików audio
 
-			// Ustawienie tekstu i ścieżki audio w zależności od wyboru
-			if (carol === "kolęda1") {
-				carolText.textContent = carol1Text;
-				audioPlayer.src = carol1Audio;
-			} else if (carol === "kolęda2") {
-				carolText.textContent = carol2Text;
-				audioPlayer.src = carol2Audio;
-			}
-			// Dodaj kolejne warunki dla innych kolęd
-		}
-	</script>
+            // Ustawienie tekstu i ścieżki audio w zależności od wyboru
+            if (carol === "kolęda1") {
+                carolText.innerHTML = carol1Text.replace(/\n/g, "<br>"); // Zamiana nowych linii na <br>
+                audioPlayer.src = carol1Audio;
+            } else if (carol === "kolęda2") {
+                carolText.innerHTML = carol2Text.replace(/\n/g, "<br>"); // Zamiana nowych linii na <br>
+                audioPlayer.src = carol2Audio;
+            }
+            // Dodaj kolejne warunki dla innych kolęd
+        }
+    </script>
 </body>
 </html>
