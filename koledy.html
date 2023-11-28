@@ -85,12 +85,11 @@
                 <h2>Wybierz kolędę:</h2>
                 <button class="carol-button" onclick="selectCarol('kolęda1')">Bóg się rodzi</button>
                 <button class="carol-button" onclick="selectCarol('kolęda2')">Cicha noc, święta noc</button>
-                <!-- Dodaj kolejne przyciski dla innych kolęd -->
+                <button class="carol-button" onclick="selectCarol('kolęda3')">Lulajże, Jezuniu...</button>
 
                 <div id="carolText" class="carol-text"><br>Tekst kolędy pojawi się tutaj po wyborze.</div>
                 <audio id="audioPlayer" controls>
                     <source src="audio/kolęda1.mp3" type="audio/mp3">
-                    <!-- Dodaj różne formaty audio, aby był obsługiwany w różnych przeglądarkach -->
                     Your browser does not support the audio tag.
                 </audio>
             </div>
@@ -120,13 +119,15 @@
             const audioPlayer = document.getElementById("audioPlayer");
 
             // Przykładowe teksty kolęd
-            const carol1Text = "\nBóg się rodzi, moc truchleje:\nPan niebiosów obnażony.\nOgień krzepnie, blask ciemnieje,\nMa granice Nieskończony:\n\nWzgardzony okryty chwałą,\nŚmiertelny Król nad wiekami;\nA Słowo ciałem się stało\nI mieszkało między nami.\n\nCóż masz, niebo, nad ziemiami?\nBóg porzucił szczęście swoje,\nWszedł między lud ukochany,\nDzieląc z nim trudy i znoje,\n\nNiemało cierpiał, niemało,\nŻeśmy byli winni sami,\nA Słowo ciałem się stało\nI mieszkało między nami.\n\nW nędznej szopie urodzony,\nŻłób Mu za kolebkę dano.\nCóż jest, czym był otoczony?\nBydło, pasterze i siano;\n\nUbodzy! Was to spotkało,\nWitać Go przed bogaczami,\nA Słowo ciałem się stało\nI mieszkało między nami.\n\nPotem i króle widziani\nCisną się między prostotą,\nNiosąc dary Panu w dani:\nMirrę, kadzidło i złoto;\n\nBóstwo to razem zmieszało\nZ wieśniaczymi ofiarami,\nA Słowo ciałem się stało\nI mieszkało między nami.\n\nPodnieś rękę, Boże Dziecię!\nBłogosław Ojczyznę miłą!\nW dobrych radach, w dobrym bycie\nWspieraj jej siłę swą siłą,\n\nDom nasz i majętność całą\nI wszystkie wioski z miastami!\nA Słowo ciałem się stało\nI mieszkało między nami.";
+            const carol1Text = "\nBóg się rodzi, moc truchleje:\nPan niebiosów obnażony.\nOgień krzepnie, blask ciemnieje,\nMa granice Nieskończony:\n\nWzgardzony okryty chwałą,\nŚmiertelny Król nad wiekami;\nA Słowo ciałem się stało\nI mieszkało między nami.\n\nCóż masz, niebo, nad ziemiami?\nBóg porzucił szczęście swoje,\nWszedł między lud ukochany,\nDzieląc z nim trudy i znoje,\n\nNiemało cierpiał, niemało,\nŻeśmy byli winni sami,\nA Słowo ciałem się stało\nI mieszkało między nami.\n\nW nędznej szopie urodzony,\nŻłób Mu za kolebkę dano.\nCóż jest, czym był otoczony?\nBydło, pasterze i siano;\n\nUbodzy! Was to spotkało,\nWitać Go przed bogaczami,\nA Słowo ciałem się stało\nI mieszkało między nami.\n\nPotem i króle widziani\nCisną się między prostotą,\nNiosąc dary Panu w dani:\nMirrę, kadzidło i złoto;\n\nBóstwo to razem zmieszało\nZ wieśniaczymi ofiarami,\nA Słowo ciałem się stało\nI mieszkało między nami.";
             const carol2Text = "\nCicha noc, święta noc,\npokój niesie ludziom wszem\na u żłobka Matka Święta\nczuwa sama uśmiechnięta,\nnad Dzieciątka snem. 2x\n\nCicha noc, święta noc,\npastuszkowie od swych trzód\nbiegną wielce zadziwieni,\nza anielskim głosem pieni,\ngdzie się spełnił cud. 2x\n\nCicha noc, święta noc,\nnarodzony Boży Syn,\nPan wielkiego majestatu,\nniesie dziś całemu światu\nodkupienie win. 2x\n\nCicha noc, święta noc,\njakiż w tobie dzisiaj cud,\nw Betlejem Dziecina święta\nwznosi w górę swe rączęta\nbłogosławi lud. 2x";
-			// Dodaj kolejne teksty kolęd
+            const carol3Text = "\nLulajże Jezuniu, moja perełko,\nLulaj ulubione me pieścidełko.\nLulajże Jezuniu, lulajże lulaj!\nA Ty Go, matulu, z płaczu utulaj.\n\nZamknijże znużone płaczem powieczki,\nUtulże zemdlone łkaniem usteczki.\nLulajże, Jezuniu...\n\nLulajże, przyjemna oczom gwiazdeczko,\nLulaj, najśliczniejsze świata słoneczko.\nLulajże, Jezuniu...\n\nMy z Tobą, tam w niebie, spocząć pragniemy,\nCiebie, tu na ziemi, kochać będziemy\n.Lulajże, Jezuniu...";
+            // Dodaj kolejne teksty kolęd
 
             // Przykładowe ścieżki do plików audio
             const carol1Audio = "audio/kolęda1.mp3";
             const carol2Audio = "audio/kolęda2.mp3";
+            const carol3Audio = "audio/kolęda3.mp3";
             // Dodaj kolejne ścieżki do plików audio
 
             // Ustawienie tekstu i ścieżki audio w zależności od wyboru
@@ -136,6 +137,9 @@
             } else if (carol === "kolęda2") {
                 carolText.innerHTML = carol2Text.replace(/\n/g, "<br>"); // Zamiana nowych linii na <br>
                 audioPlayer.src = carol2Audio;
+            } else if (carol === "kolęda3") {
+                carolText.innerHTML = carol3Text.replace(/\n/g, "<br>"); // Zamiana nowych linii na <br>
+                audioPlayer.src = carol3Audio;
             }
             // Dodaj kolejne warunki dla innych kolęd
         }
