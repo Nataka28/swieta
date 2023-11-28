@@ -1,4 +1,4 @@
-var hasla = ["Biedronka na Święta", "Picie kakao", "Lepienie bałwana", "Kalendarz adwentowy", "Ubieranie choinki"];
+var hasla = ["Biedronka na Święta","Sianko pod stołem","Dodatkowy talerzyk dla wędrowca","Skarpeta wypełniona słodyczami","Kewin sam w domu","Uroczysta kolacja przy stole z rodziną","Kolędnicy chodzący po domach","Rodzinna wyprawa do kościółka","Pieczenie pierniczków","Rozmawiające zwierzęta po północy","Ulubiona ciotka przy stole","Pieczenie makowca","Tycie po świętach","Pakowanie prezentów","Wizyta mikołaja","Dwanaście potraw wigilijnych","Wigilia bez karpa to nie wigilia","Modlitwa przy wigilii","Uszka w barszczu","Śpiewanie kolęd","Pasterka o północy","Pierwsza gwiazdka", "Picie kakao", "Lepienie bałwana", "Kalendarz adwentowy", "Ubieranie choinki"];
 var haslo = hasla[Math.floor(Math.random() * hasla.length)].toUpperCase();
 haslo = haslo.toUpperCase();
 
