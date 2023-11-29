@@ -9,43 +9,33 @@
 	<meta name="keywords" content=""/>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 	<link rel="stylesheet" href="style.css" type="text/css" />
-
 	<style>
 		.tile4 {
 			background-color: #2e5732;
 		}
+		#content {
+			text-align: left; /* Dodano wyśrodkowanie tekstu */
+		}
+		#content p {
+			font-size: 25px; /* Dostosuj wielkość czcionki według własnych preferencji */
+			margin-bottom: 20px; /* Dodano margines na dole akapitu */
+		}
 
-		#games {
-			margin-top: 20px;
+		#graButton {
 			text-align: center;
-		}
-
-		.games-list {
-			list-style: none;
-			padding: 0;
-		}
-
-		.games-list li {
-			display: inline-block;
-			margin: 10px;
-		}
-
-		.games-button {
-			text-align: center;
-			background-color: #2e5732;
+			display: block;
+			width: 100px;
+			margin: 50px auto 40px; /* Obniżono przycisk i zwiększono margines na dole */
+			padding: 15px 30px; /* Zwiększenie rozmiaru przycisku */
+			background-color: #2e5732; /* Zmiana koloru na zielony */
 			color: #fff;
-			padding: 15px 30px;
-			border: none;
-			border-radius: 5px;
-			cursor: pointer;
-			font-size: 18px;
 			text-decoration: none;
-			display: inline-block;
-			transition: background-color 0.3s;
+			border-radius: 8px;
+			font-size: 20px; /* Zmniejszenie rozmiaru czcionki */
+			transition: background-color 0.3s; /* Dodano efekt przejścia dla koloru tła */
 		}
-
-		.games-button:hover {
-			background-color: #1e3c1e;
+		#graButton:hover {
+			background-color: #1e3c20; /* Kolor po najechaniu myszką */
 		}
 	</style>
 </head>
@@ -79,14 +69,9 @@
 		</div>
 
 		<div id="content">
-			<h2>Witam w sekcji gier!</h2>
-			<p>Wybierz grę:</p>
-			<div id="games">
-				<ul class="games-list">
-					<li><a href="zasady1.html" class="games-button">Świąteczny wisielec</a></li>
-					<li><a href="zasady2.html" class="games-button">Gra w Pamięć</a></li>
-				</ul>
-			</div>
+			<h2>Zasady gry w pamięć</h2>
+			<p>ㅤㅤNa planszy gry znajdują się wymieszane kartoniki, pod którymi znajdują się obrazki. Następnie losujesz dwa z nich – jeśli są takie same, szukamy innych par. Jeśli są różne, zostają znów odwrócone i dalej są w grze - do momentu dobrania im pary. Wygrywasz, gdy odnajdziesz wszystkie pary.</p>
+			<a href="gry_pamiec.html" id="graButton">Przejdź do gry</a>
 		</div>
 	
 		<div id="footer">
@@ -100,9 +85,9 @@
 			const aktualnaData = new Date();
 			currentDateElement.textContent = aktualnaData.toLocaleDateString() + " " + aktualnaData.toLocaleTimeString();
 		}
-
+	
 		aktualizujDate();
-
+	
 		setInterval(aktualizujDate, 1000);
 	</script>
 </body>

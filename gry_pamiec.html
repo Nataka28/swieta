@@ -14,12 +14,14 @@
             background-color: #2e5732;
         } 
 
+        .card-after img {
+          width: 100%;
+        }
 
-.card-after img {
-  width: 100%; /* Zapewnia, że obraz w card-after zajmie całą przestrzeń wewnątrz karty */
-}
-
-
+        #result {
+          font-size: 24px;
+          color: #000000; /* Kolor tekstu po wygranej */
+        }
     </style>
 </head>
 <body>
@@ -35,7 +37,7 @@
     
         <div id="nav">
             <div class="tile1">
-                <a href="index.html" class="tilelink">Menu</a>
+                <a href="index.html" class="tilelink">Przepisy</a>
             </div>
             <div class="tile2">
                 <a href="koledy.html" class="tilelink">Kolędy</a>
@@ -57,11 +59,11 @@
                 <div id="time"></div>
               </div>
               <div class="game-container"></div>
-              <button id="stop" class="hide">Stop Game</button>
+              <button id="stop" class="hide">Zakończ</button>
             </div>
             <div class="controls-container">
               <p id="result"></p>
-              <button id="start">Start Game</button>
+              <button id="start">Graj</button>
             </div>
         </div>
 
@@ -127,12 +129,12 @@ const timeGenerator = () => {
   //format time before displaying
   let secondsValue = seconds < 10 ? `0${seconds}` : seconds;
   let minutesValue = minutes < 10 ? `0${minutes}` : minutes;
-  timeValue.innerHTML = `<span>Time:</span>${minutesValue}:${secondsValue}`;
+  timeValue.innerHTML = `<span>Czas:</span>${minutesValue}:${secondsValue}`;
 };
 //For calculating moves
 const movesCounter = () => {
   movesCount += 1;
-  moves.innerHTML = `<span>Moves:</span>${movesCount}`;
+  moves.innerHTML = `<span>Ruchy:</span>${movesCount}`;
 };
 //Pick random objects from the items array
 const generateRandom = (size = 4) => {
@@ -203,8 +205,8 @@ const matrixGenerator = (cardValues, size = 4) => {
             winCount += 1;
             //check if winCount ==half of cardValues
             if (winCount == Math.floor(cardValues.length / 2)) {
-              result.innerHTML = `<h2>You Won</h2>
-            <h4>Moves: ${movesCount}</h4>`;
+              result.innerHTML = `<h2>Wygrałeś!</h2>
+            <h4>Ruchy: ${movesCount}</h4>`;
               stopGame();
             }
           } else {
@@ -235,7 +237,7 @@ startButton.addEventListener("click", () => {
   //Start timer
   interval = setInterval(timeGenerator, 1000);
   //initial moves
-  moves.innerHTML = `<span>Moves:</span> ${movesCount}`;
+  moves.innerHTML = `<span>Ruchy:</span> ${movesCount}`;
   initializer();
 });
 //Stop game

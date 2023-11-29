@@ -3,79 +3,281 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">	
-	<meta charset="utf-8"/>
-	<title>Moja strona</title>
-	<meta name="description" content="Moja własna strona internetowa!"/>
-	<meta name="keywords" content=""/>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-	<link rel="stylesheet" href="style.css" type="text/css" />
-	<style>
-		.tile1
-{
-	background-color: #2e5732;
+    <meta charset="utf-8"/>
+    <title>Moja strona</title>
+    <meta name="description" content="Moja własna strona internetowa!"/>
+    <meta name="keywords" content=""/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <style>
+     .ingredients {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
 }
-img.tak {
-      width: 948px; /* określona szerokość */
-      height: 500px; /* określona wysokość */
-      /* Możesz również użyć max-width i max-height, aby ograniczyć maksymalne wymiary */
-      /* max-width: 100%; */
-      /* max-height: 100%; */
-    }
 
-	</style>
+.ingredients-list {
+    flex: 0 0 70%; /* Zajmuje 70% szerokości */
+}
 
+.ingredients-quantity {
+    flex: 0 0 30%; /* Zajmuje 30% szerokości */
+    text-align: right;
+}
+     .tile1 {
+            background-color: #2e5732;
+        }
+
+        .recipes-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .recipe {
+            position: relative;
+            width: 300px;
+            margin: 0 10px 20px;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .recipe:hover {
+            transform: scale(1.1);
+        }
+
+        .recipe img {
+            width: 100%;
+            height: 200px;
+            display: block;
+            border-radius: 15px 15px 0 0;
+            object-fit: cover;
+        }
+
+        .caption {
+            position: absolute;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+            font-size: 16px;
+            border-radius: 0 0 15px 15px;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 40px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.904);
+            justify-content: center;
+            align-items: center;
+            display: flex;
+        }
+
+        .modal-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80%;
+            width: 80%;
+        }
+
+        .modal-frame {
+            border: 10px solid #2e5732;
+            box-sizing: border-box;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            margin: 0; /* Usunięcie marginesów */
+        }
+
+        #container {
+            width: 1000px;
+            margin: auto;
+        }
+
+        #logo {
+            width: 1000px;
+            margin: auto;
+        }
+
+        .rounded-logo {
+            border-radius: 0;
+        }
+        img {
+            max-width: 100%; /* Powiększone zdjęcie */
+            max-height: 100%;
+            display: block; /* Usunięcie przerwy pod obrazem */
+            margin: 0 auto; /* Wyśrodkowanie obrazu */
+        }
+    </style>
 </head>
 <body>
     <video autoplay muted loop>
         <source src="snieg.mp4" type="video/mp4">
-        <!-- Dodaj różne formaty wideo, aby był obsługiwany w różnych przeglądarkach -->
         Your browser does not support the video tag.
     </video>
 
-	<div id="container">
-		<div id="logo">
-		<img src="img/logo.png" height="150px" width="1000px"/>
-		</div>
-	
-	<div id="nav">
-	<div class="tile1">
-	<a href="index.html" class="tilelink">Menu</a>
-	</div>
-	<div class="tile2">
-	<a href="koledy.html" class="tilelink">Kolędy</a></div>
-	<div class="tile3">
-	<a href="galeria.html" class="tilelink">Galeria</a></div>
-	<div class="tile4">
-	<a href="gry.html" class="tilelink">Gry</a></div>
-	<div class="tile5">
-		<a href="kontakt.html" class="tilelink">Kontakt</a></div>
+    <div id="container">
+        <div id="logo">
+            <img src="img/logo.png" height="150px" width="1000px" class="rounded-logo"/>
+        </div>
+    
+        <div id="nav">
+            <div class="tile1">
+                <a href="index.html" class="tilelink">Przepisy</a>
+            </div>
+            <div class="tile2">
+                <a href="koledy.html" class="tilelink">Kolędy</a>
+            </div>
+            <div class="tile3">
+                <a href="galeria.html" class="tilelink">Galeria</a>
+            </div>
+            <div class="tile4">
+                <a href="gry.html" class="tilelink">Gry</a>
+            </div>
+            <div class="tile5">
+                <a href="kontakt.html" class="tilelink">Kontakt</a>
+            </div>
+        </div>
 
-	</div>
+        <div id="content">
+            <br>
+            <h2>Przepisy świąteczne</h2>
+            <div class="recipes-container">
+                <!-- Przykład przepisu -->
+                <div class="recipe" onclick="pokazPrzepis('Barszcz czerwony z uszkami z farszem grzybowym', 'Składniki: , Barszczu czerwonego  WINIARY: 1 opakowanie, Olej słonecznikowy: 1.5 łyżki, Mąka pszenna: 250g, Jajko: 1, Woda ciepła: 100ml, Suszone grzyby: 150g, Cebula: 2, Masło klarowane: 2 łyżek, Bułka tarta: 1 łyżka, Świeży tymianek: 1 łyżka, Pieprz: trochę, Sól trochę', ['Z mąki, jajka, oleju i wody zagnieć w misce ciasto - powinno być elastyczne i dość sprężyste. Jeśli jest za twarde – dolej wody, jeśli za rzadkie – podsyp mąką.', 'Grzyby ugotuj w małej ilości wody, aż będą miękkie. Ostudź, odcedź i bardzo drobno posiekaj.', 'Drobniutko posiekaj cebule i tymianek.', 'Na patelni rozpuść masło, dodaj cebulę, tymianek i przesmażaj, aż cebula się zeszkli.', 'Następnie dodaj posiekane grzyby, dopraw solą i pieprzem i przesmaż razem mieszając około 5 minut.', 'Gdy tak przygotowany farsz ostygnie, dodaj do niego bułkę tartą i wymieszaj.', 'Ciasto rozwałkuj i wykrawaj kieliszkiem małe placuszki.', 'Nakładaj na nie farsz i lep uszka.', 'Gotowe uszka ugotuj w osolonym wrzątku i wyjmuj łyżką cedzakową, kiedy wypłyną.', 'Przygotuj Barszcz czerwony Ekspresowa Zupa WINIARY według przepisu na opakowaniu.', 'Podawaj barszcz z uszkami.'])">
+                    <img src="img/prz1.jpg" alt="Barszcz czerwony z uszkami z farszem grzybowym">
+                    <div class="caption">Barszcz czerwony z uszkami z farszem grzybowym</div>
+                </div>
 
-    <div id="content">
-		
-		<h2>Witam na mojej świątecznej stronie internetowej!</h2>
-        <!-- Twoja treść umieszczona na wierzchu wideo -->
-		<img class='tak' src="img/mikus.png" alt="Opis obrazka">
+                <!-- Dodaj więcej przepisów w podobny sposób -->
+                <div class="recipe" onclick="pokazPrzepis('Przepis 2', 'Skladnik A, Składnik B, Składnik C', ['Krok A', 'Krok B', 'Krok C'])">
+                    <img src="img/zdj2.jpg" alt="Potrawa 2">
+                    <div class="caption">Nazwa Potrawy 2</div>
+                </div>
+
+                <div class="recipe" onclick="pokazPrzepis('Przepis 3', 'Skladnik X, Składnik Y, Składnik Z', ['Krok X', 'Krok Y', 'Krok Z'])">
+                    <img src="img/zdj3.jpg" alt="Potrawa 3">
+                    <div class="caption">Nazwa Potrawy 3</div>
+                </div>
+
+                <!-- Dodaj kolejne przepisy -->
+                <div class="recipe" onclick="pokazPrzepis('Przepis 4', 'Skladnik P, Składnik Q, Składnik R', ['Krok P', 'Krok Q', 'Krok R'])">
+                    <img src="img/zdj4.jpg" alt="Potrawa 4">
+                    <div class="caption">Nazwa Potrawy 4</div>
+                </div>
+
+                <div class="recipe" onclick="pokazPrzepis('Przepis 5', 'Skladnik M, Składnik N, Składnik O', ['Krok M', 'Krok N', 'Krok O'])">
+                    <img src="img/zdj5.jpg" alt="Potrawa 5">
+                    <div class="caption">Nazwa Potrawy 5</div>
+                </div>
+
+                <div class="recipe" onclick="pokazPrzepis('Przepis 6', 'Skladnik J, Składnik K, Składnik L', ['Krok J', 'Krok K', 'Krok L'])">
+                    <img src="img/zdj6.jpg" alt="Potrawa 6">
+                    <div class="caption">Nazwa Potrawy 6</div>
+                </div>
+            </div>
+        </div>
+    
+        <div id="footer">
+            By Nataka28 &copy; Wszelkie prawa zastrzeżone <span id="currentDate"></span>
+        </div>
     </div>
-	
-	<div id="footer">
-		By Nataka28 &copy; Wszelkie prawa zastrzeżone <span id="currentDate"></span>
-		</div>
-	</div>
 
-		<script>
-			function aktualizujDate() {
-				const currentDateElement = document.getElementById("currentDate");
-				const aktualnaData = new Date();
-				currentDateElement.textContent = aktualnaData.toLocaleDateString() + " " + aktualnaData.toLocaleTimeString();
-			}
-	
-			// Wywołanie funkcji aktualizującej datę na początku
-			aktualizujDate();
-	
-			// Ustawienie interwału, aby odświeżać datę co sekundę
-			setInterval(aktualizujDate, 1000);
-		</script>
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-frame">
+                <span class="close" id="closeModal" onclick="zamknijZdjecie()">&times;</span>
+                <div id="modalContent"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function aktualizujDate() {
+            const currentDateElement = document.getElementById("currentDate");
+            const aktualnaData = new Date();
+            currentDateElement.textContent = aktualnaData.toLocaleDateString() + " " + aktualnaData.toLocaleTimeString();
+        }
+    
+        function pokazPrzepis(nazwaPrzepisu, skladniki, kroki) {
+            const modal = document.getElementById("myModal");
+            const modalContent = document.getElementById("modalContent");
+    
+            const skladnikiHTML = skladniki
+                .split(', ')
+                .map(skladnik => `<div>${skladnik}</div>`);
+    
+            modalContent.innerHTML = `
+                <h2>${nazwaPrzepisu}</h2>
+                <div class="ingredients">
+                    <div class="ingredients-list">${skladnikiHTML.join('')}</div>
+                </div>
+                <p>Kroki:
+                    <ol>
+                        ${kroki.map(krok => `<li>${krok}</li>`).join("")}
+                    </ol>
+                </p>
+            `;
+    
+            modal.style.display = "flex";
+        }
+    
+
+        function pokazZdjecie(src, alt) {
+            const modal = document.getElementById("myModal");
+            const modalContent = document.getElementById("modalContent");
+
+            modalContent.innerHTML = `
+                <img src="${src}" alt="${alt}">
+            `;
+
+            modal.style.display = "flex";
+        }
+
+        function zamknijPrzepis() {
+            const modal = document.getElementById("myModal");
+            modal.style.display = "none";
+        }
+
+        function zamknijZdjecie() {
+            const modal = document.getElementById("myModal");
+            modal.style.display = "none";
+        }
+
+        // Wywołanie funkcji aktualizującej datę na początku
+        aktualizujDate();
+
+        // Pokaż zdjęcie na ekranie po załadowaniu strony
+        window.onload = function () {
+            pokazZdjecie('img/mikus.png', 'Mikus');
+        };
+    </script>
 </body>
 </html>
