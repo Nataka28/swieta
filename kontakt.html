@@ -3,140 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">	
-	<meta charset="utf-8"/>
-	<title>Moja strona</title>
-	<meta name="description" content="Moja własna strona internetowa!"/>
-	<meta name="keywords" content=""/>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-	<link rel="stylesheet" href="style.css" type="text/css" />
-	<style>
-		.tile5
-{
-	background-color: #2e5732;
-}
-#contact-form input[type="submit"] {
-    background-color: #2e5732;
-    color: #fff;
-    cursor: pointer;
-    font-size: 14px; /* Adjust the font size */
-    padding: 6px 12px; /* Adjust padding if needed */
-	width: 200px;
-}
+    <meta charset="utf-8"/>
+    <title>Moja strona</title>
+    <meta name="description" content="Moja własna strona internetowa!"/>
+    <meta name="keywords" content=""/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+        }
 
-#contact-form input[type="submit"]:hover {
-    background-color: #205d2e;
-}
-#contact-form {
-    max-width: 900px;
-    height: 600px;
-    margin: 50px auto;
-    padding-top: 100px;
-    border: 1px solid #ccc;
-    border-radius: 15px; /* Adjust the border radius for rounded corners */
-    background-color: #f9f9f9;
-    overflow: auto;
-}
+        #contact-form {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 15px;
+            background-color: #fff;
+            height: 650px; /* Adjusted height */
+        }
 
-#contact-form label {
-    display: block;
-    margin-bottom: 8px;
-}
+        #contact-form h2 {
+            color: #2e5732;
+        }
 
-#contact-form input,
-#contact-form textarea {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 12px;
-    box-sizing: border-box;
-    border-radius: 8px; /* Adjust the border radius for rounded corners */
-}
+        #contact-form label {
+            display: block;
+            margin-bottom: 8px;
+            color: #2e5732;
+        }
 
-#contact-form input[type="submit"] {
-    background-color: #2e5732;
-    color: #fff;
-    cursor: pointer;
-    font-size: 14px;
-    padding: 6px 12px;
-    width: 200px;
-    border-radius: 10px; /* Adjust the border radius for rounded corners */
-}
+        #contact-form input,
+        #contact-form textarea,
+        #contact-form select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
 
-#contact-form input[type="submit"]:hover {
-    background-color: #205d2e;
-}
+        #contact-form input[type="submit"] {
+            background-color: #2e5732;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            border-radius: 10px;
+        }
 
-.small-text {
-    font-size: 12px;
-    color: #888;
-}
+        #contact-form input[type="submit"]:hover {
+            background-color: #205d2e;
+        }
 
-	</style>
-
+        .small-text {
+            font-size: 12px;
+            color: #888;
+        }
+    </style>
 </head>
 <body>
-    <video autoplay muted loop>
-        <source src="snieg.mp4" type="video/mp4">
-        <!-- Dodaj różne formaty wideo, aby był obsługiwany w różnych przeglądarkach -->
-        Your browser does not support the video tag.
-    </video>
-
-	<div id="container">
-		<div id="logo">
-		<img src="img/logo.png" height="150px" width="1000px"/>
-		</div>
-	
-	<div id="nav">
-	<div class="tile1">
-	<a href="index.html" class="tilelink">Menu</a>
-	</div>
-	<div class="tile2">
-	<a href="koledy.html" class="tilelink">Kolędy</a></div>
-	<div class="tile3">
-	<a href="galeria.html" class="tilelink">Galeria</a></div>
-	<div class="tile4">
-	<a href="gry.html" class="tilelink">Gry</a></div>
-	<div class="tile5">
-		<a href="kontakt.html" class="tilelink">Kontakt</a></div>
-
-	</div>
-
-    <div id="content">
-		<h2>Kontakt</h2>
-	
-		<div id="contact-form">
-			<form action="process_form.php" method="post">
-				<label for="name">Imię i Nazwisko:</label>
-				<input type="text" id="name" name="name" required>
-	
-				<label for="email">Adres Email:</label>
-				<input type="email" id="email" name="email" required>
-	
-				<label for="message">Wiadomość:</label>
-				<textarea id="message" name="message" rows="4" required></textarea>
-	
-				<input type="submit" value="Wyślij">
-			</form>
-		</div>
+    <div id="container">
+        <div id="logo">
+            <img src="img/logo.png" alt="Logo" height="150px" width="1000px"/>
+        </div>
+        
+		<div id="nav">
+			<div class="tile1">
+			<a href="index.html" class="tilelink">Menu</a>
+			</div>
+			<div class="tile2">
+			<a href="koledy.html" class="tilelink">Kolędy</a></div>
+			<div class="tile3">
+			<a href="galeria.html" class="tilelink">Galeria</a></div>
+			<div class="tile4">
+			<a href="gry.html" class="tilelink">Gry</a></div>
+			<div class="tile5">
+				<a href="kontakt.html" class="tilelink">Kontakt</a></div>
 		
-    </div>
-	
-	<div id="footer">
-		By Nataka28 &copy; Wszelkie prawa zastrzeżone <span id="currentDate"></span>
-		</div>
-	</div>
+			</div>
 
-		<script>
-			function aktualizujDate() {
-				const currentDateElement = document.getElementById("currentDate");
-				const aktualnaData = new Date();
-				currentDateElement.textContent = aktualnaData.toLocaleDateString() + " " + aktualnaData.toLocaleTimeString();
-			}
-	
-			// Wywołanie funkcji aktualizującej datę na początku
-			aktualizujDate();
-	
-			// Ustawienie interwału, aby odświeżać datę co sekundę
-			setInterval(aktualizujDate, 1000);
-		</script>
+        <div id="content">
+            <h2>Kontakt</h2>
+            
+            <div id="contact-form">
+                <form action="process_form.php" method="post">
+                    <label for="name">Imię i Nazwisko:</label>
+                    <input type="text" id="name" name="name" required>
+        
+                    <label for="email">Adres Email:</label>
+                    <input type="email" id="email" name="email" required>
+        
+                    <label for="message">Wiadomość:</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+
+                    <label for="rating">Ocena strony:</label>
+                    <select id="rating" name="rating" required>
+                        <option value="excellent">Doskonała</option>
+                        <option value="good">Dobra</option>
+                        <option value="average">Średnia</option>
+                        <option value="poor">Słaba</option>
+                    </select>
+        
+                    <input type="submit" value="Wyślij">
+                </form>
+            </div>
+            
+        </div>
+        
+        <div id="footer">
+            By Nataka28 &copy; Wszelkie prawa zastrzeżone <span id="currentDate"></span>
+        </div>
+    </div>
+
+    <script>
+        function aktualizujDate() {
+            const currentDateElement = document.getElementById("currentDate");
+            const aktualnaData = new Date();
+            currentDateElement.textContent = aktualnaData.toLocaleDateString() + " " + aktualnaData.toLocaleTimeString();
+        }
+
+        aktualizujDate();
+
+        setInterval(aktualizujDate, 1000);
+    </script>
 </body>
 </html>
