@@ -14,6 +14,43 @@
 {
 	background-color: #2e5732;
 }
+#contact-form {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+#contact-form label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+#contact-form input,
+#contact-form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 12px;
+    box-sizing: border-box;
+}
+
+#contact-form input[type="submit"] {
+    background-color: #2e5732;
+    color: #fff;
+    cursor: pointer;
+}
+
+#contact-form input[type="submit"]:hover {
+    background-color: #205d2e;
+}
+
+.small-text {
+    font-size: 12px;
+    color: #888;
+}
+
 
 	</style>
 
@@ -27,12 +64,12 @@
 
 	<div id="container">
 		<div id="logo">
-		<img src="img/logo.png" height="150px" width="1000px"/>
+		<img src="logo.png" height="150px" width="1000px"/>
 		</div>
 	
 	<div id="nav">
 	<div class="tile1">
-	<a href="index.html" class="tilelink">Przepisy</a>
+	<a href="index.html" class="tilelink">Menu</a>
 	</div>
 	<div class="tile2">
 	<a href="koledy.html" class="tilelink">Kolędy</a></div>
@@ -46,7 +83,22 @@
 	</div>
 
     <div id="content">
-		
+		<h2>Kontakt</h2>
+		<div id="contact-form">
+			<form action="process_form.php" method="post">
+				<label for="name">Imię i Nazwisko:</label>
+				<input type="text" id="name" name="name" required>
+	
+				<label for="email">Adres Email:</label>
+				<input type="email" id="email" name="email" required>
+	
+				<label for="message">Wiadomość:</label>
+				<textarea id="message" name="message" rows="4" required></textarea>
+	
+				<input type="submit" value="Wyślij">
+			</form>
+		</div>
+		<br><p>ㅤ</p>
     </div>
 	
 	<div id="footer">
